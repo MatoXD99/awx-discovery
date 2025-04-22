@@ -260,11 +260,7 @@ done
 echo "${header_row%,}" > "$output_csv"
 echo "${value_row%,}" >> "$output_csv"
 
-# Upload the file using curl
-curl -T "$output_csv" -u mig:mig123 http://100.101.24.5:88/webdav/
-
 # Clean up the CSV file and the script itself
-rm "$output_csv" # Delete csv
 rm "$LOG"
 rm "$TMP_CURRENT"
 rm "$TMP_UNIQUE"
