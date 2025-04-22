@@ -18,9 +18,9 @@
     - name: Execute local script on remote machine
       ansible.builtin.script: ./info.sh "/tmp/{{ custom_filename }}"
 
-    - name: Upload file using curl to WebDAV
-      ansible.builtin.command: >
-        curl -T "/tmp/{{ custom_filename }}" -u {{ user }}:{{ pass }} {{ link }}
+#    - name: Upload file using curl to WebDAV
+#      ansible.builtin.command: >
+#        curl -T "/tmp/{{ custom_filename }}" -u {{ user }}:{{ pass }} {{ link }}
 
     - name: clean-up at end (delete file)
       ansible.builtin.file:
