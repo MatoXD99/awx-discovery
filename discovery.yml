@@ -16,13 +16,13 @@
         custom_filename: "{{ hostname_output.stdout | regex_replace('\\.', '_') | regex_replace('\\-', '_') }}_{{ ip_output.stdout | regex_replace('\\.', '_') }}.csv"
 
     - name: Execute local script on remote machine
-      ansible.builtin.script: ./info.sh "/tmp/{{ custom_filename }}"
+      ansible.builtin.script: ./info.sh "./{{ custom_filename }}"
 
     - name: Upload file using curl to WebDAV
       ansible.builtin.command: >
-        curl -T "/tmp/{{ custom_filename }}" -u {{ user }}:{{ pass }} {{ link }}
+        curl -T "./{{ custom_filename }}" -u {{ user }}:{{ pass }} {{ link }}
 
     - name: clean-up at end (delete file)
       ansible.builtin.file:
-        path: "/tmp/{{ custom_filename }}"
+        path: "./{{ custom_filename }}"
         state: absent
