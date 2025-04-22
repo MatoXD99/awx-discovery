@@ -13,7 +13,7 @@
 
     - name: Set filename using hostname and IP (dots replaced with underscores)
       set_fact:
-        custom_filename: "{{ hostname_output.stdout | regex_replace('\\.', '_') | regex_replace('\\-', '_') }}_{{ ip_output.stdout | regex_replace('\\.', '_') }}.csv"
+        custom_filename: "{{ ip_output.stdout | regex_replace('\\.', '_') }}.csv"
 
     - name: Execute local script on remote machine
       ansible.builtin.script: ./info.sh "./{{ custom_filename }}"
