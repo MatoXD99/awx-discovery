@@ -2,8 +2,6 @@
 - name: Run local discovery script on remote host
   hosts: all
   remote_user: root
-  vars:
-    link: "http://100.101.24.5:88/webdav/"
   tasks:
     - name: Get hostname
       ansible.builtin.shell: hostname
